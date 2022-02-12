@@ -10,5 +10,7 @@ namespace Movement.Services.Entities
     {
         public int Id { get; set; }
         public Intersection Intersection { get; set; }
+        public float Longitude { get; set; }
+        public float Latitude { get; set; }
     }
 }

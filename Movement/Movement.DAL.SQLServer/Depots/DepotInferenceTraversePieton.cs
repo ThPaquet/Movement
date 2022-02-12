@@ -20,8 +20,8 @@ namespace Movement.DAL.SQLServer.Depots
         public InferenceTraversePieton GetInference(int p_IdBorne, string p_typeUtilisateur)
         {
             return this._context.InferencesTraversePieton
-                .FirstOrDefault(t => 
-                    t.BorneDepart.Id == p_IdBorne && t.TypeTransport.Type == p_typeUtilisateur);
+                .FirstOrDefault(t =>
+                    t.BorneDepart.Id == p_IdBorne && t.TypeUtilisateur.Type == p_typeUtilisateur);
         }
 
         public void Post(InferenceTraversePieton p_inferenceTraversePieton)

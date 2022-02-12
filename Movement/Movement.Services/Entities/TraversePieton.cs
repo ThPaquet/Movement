@@ -5,8 +5,7 @@ namespace Movement.Services.Entities
     public class TraversePieton
     {
         public int Id { get; set; }
-        public Intersection Intersection { get; set; }
-        public TypeTransport TypeTransport { get; set; }
+        public TypeUtilisateur TypeUtilisateur { get; set; }
         public DateTime Date { get; set; }
         public Borne BorneDepart { get; set; }
         public Borne BorneArrivee { get; set; }

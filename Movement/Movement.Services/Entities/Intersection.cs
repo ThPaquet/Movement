@@ -11,7 +11,6 @@ namespace Movement.Services.Entities
         public int Id { get; set; }
         public string Nom { get; set; }
         public List<Borne> Bornes { get; set; }
-        public float Longitude { get; set; }
-        public float Latitude { get; set; }
+
     }
 }
