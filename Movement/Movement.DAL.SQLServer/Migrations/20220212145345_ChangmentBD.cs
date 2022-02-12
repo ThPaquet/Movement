@@ -8,9 +8,6 @@ namespace Movement.DAL.SQLServer.Migrations
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.DropForeignKey(
-                name: "FK_InferencesTraversePieton_Borne_BorneArriveeId",
-                table: "InferencesTraversePieton");
 
             migrationBuilder.DropForeignKey(
                 name: "FK_InferencesTraversePieton_Intersections_IntersectionId",
@@ -33,10 +30,6 @@ namespace Movement.DAL.SQLServer.Migrations
                 table: "TraversesPieton");
 
             migrationBuilder.DropIndex(
-                name: "IX_InferencesTraversePieton_BorneArriveeId",
-                table: "InferencesTraversePieton");
-
-            migrationBuilder.DropIndex(
                 name: "IX_InferencesTraversePieton_IntersectionId",
                 table: "InferencesTraversePieton");
 
@@ -51,10 +44,6 @@ namespace Movement.DAL.SQLServer.Migrations
             migrationBuilder.DropColumn(
                 name: "Longitude",
                 table: "Intersections");
-
-            migrationBuilder.DropColumn(
-                name: "BorneArriveeId",
-                table: "InferencesTraversePieton");
 
             migrationBuilder.DropColumn(
                 name: "IntersectionId",

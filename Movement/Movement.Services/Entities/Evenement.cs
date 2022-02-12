@@ -12,5 +12,6 @@ namespace Movement.Services.Entities
         public Utilisateur Utilisateur { get; set; }
         public Intersection Intersection { get; set; }
         public ActionFeu Action { get; set; }
+        public DateTime Date { get; set; }
     }
 }

@@ -18,10 +18,10 @@ namespace Movement.DAL.SQLServer
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<InferenceTraversePieton>()
-                .HasOne(i => i.BorneDepart)
-                .WithMany()
-                .OnDelete(DeleteBehavior.Restrict);
+            //modelBuilder.Entity<InferenceTraversePieton>()
+            //    .HasOne(i => i.BorneDepart)
+            //    .WithMany()
+            //    .OnDelete(DeleteBehavior.Restrict);
 
             modelBuilder.Entity<TraversePieton>()
                 .HasOne(i => i.BorneDepart)
@@ -39,7 +39,7 @@ namespace Movement.DAL.SQLServer
 
         public DbSet<ActionFeu> ActionsFeu { get; set; }
         public DbSet<Evenement> Evenements { get; set; }
-        public DbSet<InferenceTraversePieton> InferencesTraversePieton { get; set; }
+        //public DbSet<InferenceTraversePieton> InferencesTraversePieton { get; set; }
         public DbSet<InferenceTraverseVehicule> InferencesTraverseVehicules { get; set; }
         public DbSet<Intersection> Intersections { get; set; }
         public DbSet<TraversePieton> TraversesPieton { get; set; }

@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Movement.DAL.SQLServer;
 
@@ -11,9 +12,10 @@ using Movement.DAL.SQLServer;
 namespace Movement.DAL.SQLServer.Migrations
 {
     [DbContext(typeof(MovementDbContext))]
-    partial class MovementDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220212215654_comment out inferencePieton")]
+    partial class commentoutinferencePieton
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -73,9 +75,6 @@ namespace Movement.DAL.SQLServer.Migrations
 
                     b.Property<int>("ActionId")
                         .HasColumnType("int");
-
-                    b.Property<DateTime>("Date")
-                        .HasColumnType("datetime2");
 
                     b.Property<int>("IntersectionId")
                         .HasColumnType("int");
