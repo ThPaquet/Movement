@@ -25,10 +25,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Controllers\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\Movement.DAL.SQLServer\Movement.DAL.SQLServer.csproj" />
     <ProjectReference Include="..\Movement.Services\Movement.Services.csproj" />
   </ItemGroup>
