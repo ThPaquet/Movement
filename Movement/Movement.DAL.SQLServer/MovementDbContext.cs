@@ -47,5 +47,6 @@ namespace Movement.DAL.SQLServer
         public DbSet<TypeTransport> TypesTransport { get; set; }
         public DbSet<TypeUtilisateur> TypesUtilisateur { get; set; }
         public DbSet<Utilisateur> Utilisateurs { get; set; }
+        public DbSet<Borne> Bornes { get; set; }
     }
 }

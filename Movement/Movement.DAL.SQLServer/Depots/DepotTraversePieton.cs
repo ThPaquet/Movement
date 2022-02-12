@@ -11,10 +11,16 @@ namespace Movement.DAL.SQLServer.Depots
     public class DepotTraversePieton : IDepotTraversePieton
     {
         private readonly MovementDbContext _context;
+
         public List<TraversePieton> GetAll()
         {
             return this._context.TraversesPieton
                 .ToList();
+        }
+
+        public List<TraversePieton> GetTraverseByIntersectionId(int p_intersectionId)
+        {
+            return this._context.TraversesPieton.Where(traverse => traverse.BorneDepart.Intersection.Id == p_intersectionId).ToList();
         }
 
         public void Post(TraversePieton p_traversePieton)
