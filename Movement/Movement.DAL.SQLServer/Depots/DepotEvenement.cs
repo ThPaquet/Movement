@@ -24,7 +24,7 @@ namespace Movement.DAL.SQLServer.Depots
 
         public void Post(Evenement p_Evenement)
         {
-            throw new NotImplementedException();
+            this._context.Evenements.Add(p_Evenement);
         }
     }
 }

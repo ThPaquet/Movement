@@ -10,7 +10,7 @@ namespace Movement.Services.DepotInterfaces
     public interface IDepotTraverseVehicule
     {
         public List<TraverseVehicule> GetAll();
-        public List<TraverseVehicule> GetTraverseByIntersectionId(int p_intersectionId);
+        public TraverseVehicule GetTraverseByIntersectionId(int p_intersectionId);
         public void Post(TraverseVehicule p_TraverseVehicule);
     }
 }
