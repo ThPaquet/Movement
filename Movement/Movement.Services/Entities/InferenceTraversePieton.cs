@@ -13,7 +13,6 @@ namespace Movement.Services.Entities
         public TypeTransport TypeTransport { get; set; }
         public DateTime Date { get; set; }
         public Borne BorneDepart { get; set; }
-        public Borne BorneArrivee { get; set; }
         public Byte DureeEnSecondes { get; set; }
     }
 }
