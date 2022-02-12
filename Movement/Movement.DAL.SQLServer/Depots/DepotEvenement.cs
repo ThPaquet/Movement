@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Movement.DAL.SQLServer.Depots
 {
-    internal class DepotEvenement : IDepotEvenement
+    public class DepotEvenement : IDepotEvenement
     {
         private readonly MovementDbContext _context;
 

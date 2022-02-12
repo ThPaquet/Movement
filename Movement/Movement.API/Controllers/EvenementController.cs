@@ -23,10 +23,10 @@ namespace Movement.API.Controllers
         }
 
         // GET api/<Evenement>/5
-        [HttpGet]
-        public IEnumerable<Evenement> Get(int id)
+        [HttpGet("{p_id}")]
+        public ActionResult<Evenement> Get(int p_id)
         {
-            return (IEnumerable<Evenement>)Ok(this._depot.GetEvenementByIntersectionId(id));
+            return Ok(this._depot.GetEvenementByIntersectionId(p_id));
         }
 
         // POST api/<ActionFeuController>
