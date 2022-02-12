@@ -23,11 +23,6 @@ namespace Movement.DAL.SQLServer
                 .WithMany()
                 .OnDelete(DeleteBehavior.Restrict);
 
-            modelBuilder.Entity<InferenceTraversePieton>()
-                .HasOne(i => i.BorneArrivee)
-                .WithMany()
-                .OnDelete(DeleteBehavior.Restrict);
-
             modelBuilder.Entity<TraversePieton>()
                 .HasOne(i => i.BorneDepart)
                 .WithMany()
