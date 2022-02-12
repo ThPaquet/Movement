@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.32126.317
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Movement", "Movement\Movement.csproj", "{D3F60405-F68F-4A69-BBF1-EC3174EDD075}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Movement", "Movement\Movement.csproj", "{D3F60405-F68F-4A69-BBF1-EC3174EDD075}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Movement.Services", "Movement.Services\Movement.Services.csproj", "{4C996BEC-ADFC-4577-8023-4FCB0C425DDE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{D3F60405-F68F-4A69-BBF1-EC3174EDD075}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D3F60405-F68F-4A69-BBF1-EC3174EDD075}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D3F60405-F68F-4A69-BBF1-EC3174EDD075}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4C996BEC-ADFC-4577-8023-4FCB0C425DDE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4C996BEC-ADFC-4577-8023-4FCB0C425DDE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4C996BEC-ADFC-4577-8023-4FCB0C425DDE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4C996BEC-ADFC-4577-8023-4FCB0C425DDE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Admin\\Desktop\\Movement\\Movement\\Movement\\Movement.csproj": {}
+    "C:\\Users\\starc\\source\\repos\\Movement\\Movement\\Movement\\Movement.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Admin\\Desktop\\Movement\\Movement\\Movement\\Movement.csproj": {
+    "C:\\Users\\starc\\source\\repos\\Movement\\Movement\\Movement\\Movement.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Admin\\Desktop\\Movement\\Movement\\Movement\\Movement.csproj",
+        "projectUniqueName": "C:\\Users\\starc\\source\\repos\\Movement\\Movement\\Movement\\Movement.csproj",
         "projectName": "Movement",
-        "projectPath": "C:\\Users\\Admin\\Desktop\\Movement\\Movement\\Movement\\Movement.csproj",
-        "packagesPath": "C:\\Users\\Admin\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Admin\\Desktop\\Movement\\Movement\\Movement\\obj\\",
+        "projectPath": "C:\\Users\\starc\\source\\repos\\Movement\\Movement\\Movement\\Movement.csproj",
+        "packagesPath": "C:\\Users\\starc\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\starc\\source\\repos\\Movement\\Movement\\Movement\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\Admin\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\starc\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
