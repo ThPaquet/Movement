@@ -1,11 +1,21 @@
 {
   "Version": 1,
   "ProjectMap": {
-    "d3f60405-f68f-4a69-bbf1-ec3174edd075": {
-      "ProjectGuid": "d3f60405-f68f-4a69-bbf1-ec3174edd075",
-      "DisplayName": "Movement",
+    "4c996bec-adfc-4577-8023-4fcb0c425dde": {
+      "ProjectGuid": "4c996bec-adfc-4577-8023-4fcb0c425dde",
+      "DisplayName": "Movement.Services",
       "ColorIndex": 0
+    },
+    "a1d5ca2e-4b41-4863-b144-5a59d45dca19": {
+      "ProjectGuid": "a1d5ca2e-4b41-4863-b144-5a59d45dca19",
+      "DisplayName": "Movement.DAL.SQLServer",
+      "ColorIndex": 1
+    },
+    "a2fe74e1-b743-11d0-ae1a-00a0c90fffc3": {
+      "ProjectGuid": "a2fe74e1-b743-11d0-ae1a-00a0c90fffc3",
+      "DisplayName": "Fichiers divers",
+      "ColorIndex": -1
     }
   },
-  "NextColorIndex": 1
+  "NextColorIndex": 2
 }
