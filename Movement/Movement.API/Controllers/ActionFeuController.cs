@@ -37,8 +37,14 @@ namespace Movement.API.Controllers
         [HttpPost]
         public ActionResult<ActionFeu> Post([FromBody] Requete p_requete)
         {
+            Console.WriteLine("- Requete Post -");
+            Console.WriteLine($"Cle RFID : {p_requete.cleUtilisateur}");
+            Console.WriteLine($"Borne Id  : {p_requete.IdBorne}");
             Utilisateur user = this._depotUtilisateur.GetAll().Where(user => user.Cle == p_requete.cleUtilisateur).Single();
             TypeUtilisateur typeUser = _depotTypeUtilisateur.GetAll().SingleOrDefault(type => type.Id == user.TypeUtilisateurId);
+
+            Console.WriteLine($"Type d'utilisateur : {typeUser.Type}");
+
             ActionFeu action = new ActionFeu();
 
             if (typeUser.Type == "Standard")
@@ -82,8 +88,11 @@ namespace Movement.API.Controllers
 
                 float average = results.Average(result => result.Score);
 
-                action.Type = $"Pieton {Math.Round(average)}";
+                action.Type = $"Pieton {Math.Round(average, 2)}";
+                Console.WriteLine($"Temps Moyen Calculer par ML : {Math.Round(average, 2)}");
             }
+
+            
 
             return Ok(action);
         }
