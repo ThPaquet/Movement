@@ -263,13 +263,11 @@ namespace Movement.DAL.SQLServer.Migrations
 
             modelBuilder.Entity("Movement.Services.Entities.Borne", b =>
                 {
-                    b.HasOne("Movement.Services.Entities.Intersection", "Intersection")
+                    b.HasOne("Movement.Services.Entities.Intersection", null)
                         .WithMany("Bornes")
                         .HasForeignKey("IntersectionId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-
-                    b.Navigation("Intersection");
                 });
 
             modelBuilder.Entity("Movement.Services.Entities.Evenement", b =>

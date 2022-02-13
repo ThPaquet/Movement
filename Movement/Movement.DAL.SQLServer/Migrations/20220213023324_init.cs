@@ -28,9 +28,7 @@ namespace Movement.DAL.SQLServer.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Nom = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Longitude = table.Column<float>(type: "real", nullable: false),
-                    Latitude = table.Column<float>(type: "real", nullable: false)
+                    Nom = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -64,18 +62,20 @@ namespace Movement.DAL.SQLServer.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Borne",
+                name: "Bornes",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    IntersectionId = table.Column<int>(type: "int", nullable: false)
+                    IntersectionId = table.Column<int>(type: "int", nullable: false),
+                    Longitude = table.Column<float>(type: "real", nullable: false),
+                    Latitude = table.Column<float>(type: "real", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Borne", x => x.Id);
+                    table.PrimaryKey("PK_Bornes", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Borne_Intersections_IntersectionId",
+                        name: "FK_Bornes_Intersections_IntersectionId",
                         column: x => x.IntersectionId,
                         principalTable: "Intersections",
                         principalColumn: "Id",
@@ -159,55 +159,12 @@ namespace Movement.DAL.SQLServer.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "InferencesTraversePieton",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    IntersectionId = table.Column<int>(type: "int", nullable: false),
-                    TypeTransportId = table.Column<int>(type: "int", nullable: false),
-                    Date = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    BorneDepartId = table.Column<int>(type: "int", nullable: false),
-                    BorneArriveeId = table.Column<int>(type: "int", nullable: false),
-                    DureeEnSecondes = table.Column<byte>(type: "tinyint", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_InferencesTraversePieton", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_InferencesTraversePieton_Borne_BorneArriveeId",
-                        column: x => x.BorneArriveeId,
-                        principalTable: "Borne",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
-                    table.ForeignKey(
-                        name: "FK_InferencesTraversePieton_Borne_BorneDepartId",
-                        column: x => x.BorneDepartId,
-                        principalTable: "Borne",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
-                    table.ForeignKey(
-                        name: "FK_InferencesTraversePieton_Intersections_IntersectionId",
-                        column: x => x.IntersectionId,
-                        principalTable: "Intersections",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_InferencesTraversePieton_TypesTransport_TypeTransportId",
-                        column: x => x.TypeTransportId,
-                        principalTable: "TypesTransport",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "TraversesPieton",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    IntersectionId = table.Column<int>(type: "int", nullable: false),
-                    TypeTransportId = table.Column<int>(type: "int", nullable: false),
+                    TypeUtilisateurId = table.Column<int>(type: "int", nullable: false),
                     Date = table.Column<DateTime>(type: "datetime2", nullable: false),
                     BorneDepartId = table.Column<int>(type: "int", nullable: false),
                     BorneArriveeId = table.Column<int>(type: "int", nullable: false),
@@ -217,27 +174,21 @@ namespace Movement.DAL.SQLServer.Migrations
                 {
                     table.PrimaryKey("PK_TraversesPieton", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_TraversesPieton_Borne_BorneArriveeId",
+                        name: "FK_TraversesPieton_Bornes_BorneArriveeId",
                         column: x => x.BorneArriveeId,
-                        principalTable: "Borne",
+                        principalTable: "Bornes",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
-                        name: "FK_TraversesPieton_Borne_BorneDepartId",
+                        name: "FK_TraversesPieton_Bornes_BorneDepartId",
                         column: x => x.BorneDepartId,
-                        principalTable: "Borne",
+                        principalTable: "Bornes",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
-                        name: "FK_TraversesPieton_Intersections_IntersectionId",
-                        column: x => x.IntersectionId,
-                        principalTable: "Intersections",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_TraversesPieton_TypesTransport_TypeTransportId",
-                        column: x => x.TypeTransportId,
-                        principalTable: "TypesTransport",
+                        name: "FK_TraversesPieton_TypesUtilisateur_TypeUtilisateurId",
+                        column: x => x.TypeUtilisateurId,
+                        principalTable: "TypesUtilisateur",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -250,7 +201,8 @@ namespace Movement.DAL.SQLServer.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     UtilisateurId = table.Column<int>(type: "int", nullable: false),
                     IntersectionId = table.Column<int>(type: "int", nullable: false),
-                    ActionId = table.Column<int>(type: "int", nullable: false)
+                    ActionId = table.Column<int>(type: "int", nullable: false),
+                    Date = table.Column<DateTime>(type: "datetime2", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -276,8 +228,8 @@ namespace Movement.DAL.SQLServer.Migrations
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_Borne_IntersectionId",
-                table: "Borne",
+                name: "IX_Bornes_IntersectionId",
+                table: "Bornes",
                 column: "IntersectionId");
 
             migrationBuilder.CreateIndex(
@@ -294,26 +246,6 @@ namespace Movement.DAL.SQLServer.Migrations
                 name: "IX_Evenements_UtilisateurId",
                 table: "Evenements",
                 column: "UtilisateurId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_InferencesTraversePieton_BorneArriveeId",
-                table: "InferencesTraversePieton",
-                column: "BorneArriveeId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_InferencesTraversePieton_BorneDepartId",
-                table: "InferencesTraversePieton",
-                column: "BorneDepartId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_InferencesTraversePieton_IntersectionId",
-                table: "InferencesTraversePieton",
-                column: "IntersectionId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_InferencesTraversePieton_TypeTransportId",
-                table: "InferencesTraversePieton",
-                column: "TypeTransportId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_InferencesTraverseVehicules_IntersectionId",
@@ -336,14 +268,9 @@ namespace Movement.DAL.SQLServer.Migrations
                 column: "BorneDepartId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_TraversesPieton_IntersectionId",
+                name: "IX_TraversesPieton_TypeUtilisateurId",
                 table: "TraversesPieton",
-                column: "IntersectionId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_TraversesPieton_TypeTransportId",
-                table: "TraversesPieton",
-                column: "TypeTransportId");
+                column: "TypeUtilisateurId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_TraversesVehicule_IntersectionId",
@@ -367,9 +294,6 @@ namespace Movement.DAL.SQLServer.Migrations
                 name: "Evenements");
 
             migrationBuilder.DropTable(
-                name: "InferencesTraversePieton");
-
-            migrationBuilder.DropTable(
                 name: "InferencesTraverseVehicules");
 
             migrationBuilder.DropTable(
@@ -385,7 +309,7 @@ namespace Movement.DAL.SQLServer.Migrations
                 name: "Utilisateurs");
 
             migrationBuilder.DropTable(
-                name: "Borne");
+                name: "Bornes");
 
             migrationBuilder.DropTable(
                 name: "TypesTransport");
