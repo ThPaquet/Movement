@@ -61,7 +61,7 @@ namespace Movement.API.Controllers
                 return NotFound();
             }
 
-            borne.Intersection = p_borne.Intersection;
+            borne.IntersectionId = p_borne.IntersectionId;
             borne.Latitude = p_borne.Latitude;
             borne.Longitude = p_borne.Longitude;
 

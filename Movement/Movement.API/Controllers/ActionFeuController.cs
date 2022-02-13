@@ -50,7 +50,7 @@ namespace Movement.API.Controllers
             {
 
                 Borne borneDepart = _depotBorne.GetAll().Single(borne => borne.Id == p_requete.IdBorne);
-                List<Borne> bornes = _depotBorne.GetBorneByIntersectionId(borneDepart.Intersection.Id);
+                List<Borne> bornes = _depotBorne.GetBorneByIntersectionId(borneDepart.IntersectionId);
                 List<MLModel.ModelInput> modelInputs = new List<MLModel.ModelInput>();
                 List<MLModel.ModelOutput> results = new List<MLModel.ModelOutput>();
 
@@ -61,7 +61,7 @@ namespace Movement.API.Controllers
                         var sampleData = new MLModel.ModelInput()
                         {
                             TypeUtilisateur = typeUser.Id,
-                            Date = p_requete.Date.ToString(),
+                            Date = DateTime.Now.ToString(),
                             LongitudeBorneDepart = borneDepart.Longitude,
                             LongitudeBorneArrivee = borne.Longitude,
                             LatitudeBorneDepart = borneDepart.Latitude,
@@ -79,7 +79,7 @@ namespace Movement.API.Controllers
 
                 float average = results.Average(result => result.Score);
 
-                action.Type = $"Pieton {average}";
+                action.Type = $"Pieton {Math.Round(average)}";
             }
 
             return Ok(action);

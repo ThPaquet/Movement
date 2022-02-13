@@ -13,10 +13,6 @@ namespace Movement.DAL.SQLServer.Migrations
                 table: "Borne");
 
             migrationBuilder.DropForeignKey(
-                name: "FK_InferencesTraversePieton_Borne_BorneDepartId",
-                table: "InferencesTraversePieton");
-
-            migrationBuilder.DropForeignKey(
                 name: "FK_TraversesPieton_Borne_BorneArriveeId",
                 table: "TraversesPieton");
 
@@ -51,14 +47,6 @@ namespace Movement.DAL.SQLServer.Migrations
                 onDelete: ReferentialAction.Cascade);
 
             migrationBuilder.AddForeignKey(
-                name: "FK_InferencesTraversePieton_Bornes_BorneDepartId",
-                table: "InferencesTraversePieton",
-                column: "BorneDepartId",
-                principalTable: "Bornes",
-                principalColumn: "Id",
-                onDelete: ReferentialAction.Restrict);
-
-            migrationBuilder.AddForeignKey(
                 name: "FK_TraversesPieton_Bornes_BorneArriveeId",
                 table: "TraversesPieton",
                 column: "BorneArriveeId",
@@ -80,10 +68,6 @@ namespace Movement.DAL.SQLServer.Migrations
             migrationBuilder.DropForeignKey(
                 name: "FK_Bornes_Intersections_IntersectionId",
                 table: "Bornes");
-
-            migrationBuilder.DropForeignKey(
-                name: "FK_InferencesTraversePieton_Bornes_BorneDepartId",
-                table: "InferencesTraversePieton");
 
             migrationBuilder.DropForeignKey(
                 name: "FK_TraversesPieton_Bornes_BorneArriveeId",
@@ -118,14 +102,6 @@ namespace Movement.DAL.SQLServer.Migrations
                 principalTable: "Intersections",
                 principalColumn: "Id",
                 onDelete: ReferentialAction.Cascade);
-
-            migrationBuilder.AddForeignKey(
-                name: "FK_InferencesTraversePieton_Borne_BorneDepartId",
-                table: "InferencesTraversePieton",
-                column: "BorneDepartId",
-                principalTable: "Borne",
-                principalColumn: "Id",
-                onDelete: ReferentialAction.Restrict);
 
             migrationBuilder.AddForeignKey(
                 name: "FK_TraversesPieton_Borne_BorneArriveeId",

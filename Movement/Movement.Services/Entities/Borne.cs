@@ -9,7 +9,7 @@ namespace Movement.Services.Entities
     public class Borne
     {
         public int Id { get; set; }
-        public Intersection Intersection { get; set; }
+        public int IntersectionId { get; set; }
         public float Longitude { get; set; }
         public float Latitude { get; set; }
     }

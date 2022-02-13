@@ -10,6 +10,5 @@ namespace Movement.Services.Entities
     {
         public int IdUtilisateur { get; set; }
         public int IdBorne { get; set; }
-        public DateTime Date { get; set; }
     }
 }

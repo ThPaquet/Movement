@@ -20,7 +20,7 @@ namespace Movement.DAL.SQLServer.Depots
 
         public List<TraversePieton> GetTraverseByIntersectionId(int p_intersectionId)
         {
-            return this._context.TraversesPieton.Where(traverse => traverse.BorneDepart.Intersection.Id == p_intersectionId).ToList();
+            return this._context.TraversesPieton.Where(traverse => traverse.BorneDepart.IntersectionId == p_intersectionId).ToList();
         }
 
         public void Post(TraversePieton p_traversePieton)

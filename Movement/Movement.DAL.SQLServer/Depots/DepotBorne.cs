@@ -19,7 +19,7 @@ namespace Movement.DAL.SQLServer.Depots
 
         public List<Borne> GetBorneByIntersectionId(int p_intersectionId)
         {
-            return this._context.Bornes.Where(borne => borne.Intersection.Id == p_intersectionId).ToList();
+            return this._context.Bornes.Where(borne => borne.IntersectionId == p_intersectionId).ToList();
         }
 
         public void Post(Borne p_Borne)
@@ -33,7 +33,7 @@ namespace Movement.DAL.SQLServer.Depots
 
             if (borne != null)
             {
-                borne.Intersection = p_Borne.Intersection;
+                borne.IntersectionId = p_Borne.IntersectionId;
                 borne.Longitude = p_Borne.Longitude;
                 borne.Latitude = p_Borne.Latitude;
                 this._context.Update(borne);

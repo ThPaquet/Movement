@@ -10,14 +10,6 @@ namespace Movement.DAL.SQLServer.Migrations
         {
 
             migrationBuilder.DropForeignKey(
-                name: "FK_InferencesTraversePieton_Intersections_IntersectionId",
-                table: "InferencesTraversePieton");
-
-            migrationBuilder.DropForeignKey(
-                name: "FK_InferencesTraversePieton_TypesTransport_TypeTransportId",
-                table: "InferencesTraversePieton");
-
-            migrationBuilder.DropForeignKey(
                 name: "FK_TraversesPieton_Intersections_IntersectionId",
                 table: "TraversesPieton");
 
@@ -84,14 +76,6 @@ namespace Movement.DAL.SQLServer.Migrations
                 defaultValue: 0f);
 
             migrationBuilder.AddForeignKey(
-                name: "FK_InferencesTraversePieton_TypesUtilisateur_TypeUtilisateurId",
-                table: "InferencesTraversePieton",
-                column: "TypeUtilisateurId",
-                principalTable: "TypesUtilisateur",
-                principalColumn: "Id",
-                onDelete: ReferentialAction.Cascade);
-
-            migrationBuilder.AddForeignKey(
                 name: "FK_TraversesPieton_TypesUtilisateur_TypeUtilisateurId",
                 table: "TraversesPieton",
                 column: "TypeUtilisateurId",
@@ -102,9 +86,6 @@ namespace Movement.DAL.SQLServer.Migrations
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.DropForeignKey(
-                name: "FK_InferencesTraversePieton_TypesUtilisateur_TypeUtilisateurId",
-                table: "InferencesTraversePieton");
 
             migrationBuilder.DropForeignKey(
                 name: "FK_TraversesPieton_TypesUtilisateur_TypeUtilisateurId",
@@ -187,30 +168,6 @@ namespace Movement.DAL.SQLServer.Migrations
                 name: "IX_InferencesTraversePieton_IntersectionId",
                 table: "InferencesTraversePieton",
                 column: "IntersectionId");
-
-            migrationBuilder.AddForeignKey(
-                name: "FK_InferencesTraversePieton_Borne_BorneArriveeId",
-                table: "InferencesTraversePieton",
-                column: "BorneArriveeId",
-                principalTable: "Borne",
-                principalColumn: "Id",
-                onDelete: ReferentialAction.Restrict);
-
-            migrationBuilder.AddForeignKey(
-                name: "FK_InferencesTraversePieton_Intersections_IntersectionId",
-                table: "InferencesTraversePieton",
-                column: "IntersectionId",
-                principalTable: "Intersections",
-                principalColumn: "Id",
-                onDelete: ReferentialAction.Cascade);
-
-            migrationBuilder.AddForeignKey(
-                name: "FK_InferencesTraversePieton_TypesTransport_TypeTransportId",
-                table: "InferencesTraversePieton",
-                column: "TypeTransportId",
-                principalTable: "TypesTransport",
-                principalColumn: "Id",
-                onDelete: ReferentialAction.Cascade);
 
             migrationBuilder.AddForeignKey(
                 name: "FK_TraversesPieton_Intersections_IntersectionId",

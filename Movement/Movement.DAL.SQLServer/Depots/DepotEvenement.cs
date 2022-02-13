@@ -10,7 +10,7 @@ namespace Movement.DAL.SQLServer.Depots
 {
     public class DepotEvenement : IDepotEvenement
     {
-        private readonly MovementDbContext _context;
+        private readonly MovementDbContext _context = new MovementDbContext();
 
         public List<Evenement> GetAll()
         {
