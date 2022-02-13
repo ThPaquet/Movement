@@ -10,7 +10,7 @@ namespace Movement.DAL.SQLServer.Depots
 {
     public class DepotUtilisateur : IDepotUtilisateur
     {
-        private readonly MovementDbContext _context;
+        private readonly MovementDbContext _context = new MovementDbContext();
 
         public List<Utilisateur> GetAll()
         {
@@ -32,7 +32,7 @@ namespace Movement.DAL.SQLServer.Depots
             Utilisateur utilisateur = this._context.Utilisateurs.Single(utilisateur => utilisateur.Id == p_utilisateur.Id);
             if (utilisateur != null)
             {
-                utilisateur.TypeUtilisateur = p_utilisateur.TypeUtilisateur;
+                utilisateur.TypeUtilisateurId = p_utilisateur.TypeUtilisateurId;
                 utilisateur.Cle = p_utilisateur.Cle;
                 this._context.Utilisateurs.Update(utilisateur);
                 this._context.SaveChanges();

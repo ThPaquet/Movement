@@ -8,7 +8,7 @@ namespace Movement.Services.Entities
 {
     public class Requete
     {
-        public int IdUtilisateur { get; set; }
+        public string cleUtilisateur { get; set; }
         public int IdBorne { get; set; }
     }
 }

@@ -67,7 +67,7 @@ namespace Movement.API.Controllers
                 return NotFound();
             }
 
-            utilisateur.TypeUtilisateur = p_utilisateur.TypeUtilisateur;
+            utilisateur.TypeUtilisateurId = p_utilisateur.TypeUtilisateurId;
             utilisateur.Cle = p_utilisateur.Cle;
 
             this._depot.Put(utilisateur);

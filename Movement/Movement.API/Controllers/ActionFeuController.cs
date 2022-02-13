@@ -15,13 +15,15 @@ namespace Movement.API.Controllers
         private readonly IDepotActionFeu _depotActionFeu;
         private readonly IDepotTypeUtilisateur _depotTypeUtilisateur;
         private readonly IDepotBorne _depotBorne;
+        private readonly IDepotUtilisateur _depotUtilisateur;
 
 
-        public ActionFeuController(IDepotActionFeu p_depotActionFeu, IDepotTypeUtilisateur p_depotTypeUtilisateur, IDepotBorne p_depotBorne)
+        public ActionFeuController(IDepotActionFeu p_depotActionFeu, IDepotTypeUtilisateur p_depotTypeUtilisateur, IDepotBorne p_depotBorne, IDepotUtilisateur p_depotUtilisateur)
         {
             this._depotActionFeu = p_depotActionFeu;
             this._depotTypeUtilisateur = p_depotTypeUtilisateur;
             this._depotBorne = p_depotBorne;
+            this._depotUtilisateur = p_depotUtilisateur;
         }
 
         // GET: api/<ActionFeuController>
@@ -35,7 +37,8 @@ namespace Movement.API.Controllers
         [HttpPost]
         public ActionResult<ActionFeu> Post([FromBody] Requete p_requete)
         {
-            TypeUtilisateur typeUser = _depotTypeUtilisateur.GetAll().SingleOrDefault(type => type.Id == p_requete.IdUtilisateur);
+            Utilisateur user = this._depotUtilisateur.GetAll().Where(user => user.Cle == p_requete.cleUtilisateur).Single();
+            TypeUtilisateur typeUser = _depotTypeUtilisateur.GetAll().SingleOrDefault(type => type.Id == user.TypeUtilisateurId);
             ActionFeu action = new ActionFeu();
 
             if (typeUser.Type == "Standard")

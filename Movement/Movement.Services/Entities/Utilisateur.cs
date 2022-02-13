@@ -9,7 +9,7 @@ namespace Movement.Services.Entities
     public class Utilisateur
     {
         public int Id { get; set; }
-        public TypeUtilisateur TypeUtilisateur { get; set; }
+        public int TypeUtilisateurId { get; set; }
         public string Cle { get; set; }
     }
 }
