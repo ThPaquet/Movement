@@ -1,5 +1,22 @@
 using Movement.DAL.SQLServer.Depots;
 using Movement.Services.DepotInterfaces;
+using Movement_API;
+
+var sampleData = new MLModel.ModelInput()
+{
+    TypeUtilisateur = 3,
+    Date = "2021-04-10 07:10:35",
+    LongitudeBorneDepart = 46.846234f,
+    LongitudeBorneArrivee = 46.846272f,
+    LatitudeBorneDepart = -71.37293f,
+    LatitudeBorneArrivee = -71.37293f
+};
+
+var result = MLModel.Predict(sampleData);
+
+string sentiment = result.Score == 1 ? "Positive" : "Negative";
+Console.WriteLine(sentiment);
+
 
 var builder = WebApplication.CreateBuilder(args);
 

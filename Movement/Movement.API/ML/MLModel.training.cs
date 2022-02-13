@@ -5,7 +5,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.ML.Data;
-using Microsoft.ML.Trainers.LightGbm;
 using Microsoft.ML.Trainers;
 using Microsoft.ML;
 
@@ -32,7 +31,8 @@ namespace Movement_API
             var pipeline = mlContext.Transforms.ReplaceMissingValues(new []{new InputOutputColumnPair(@"TypeUtilisateur", @"TypeUtilisateur"),new InputOutputColumnPair(@"LongitudeBorneDepart", @"LongitudeBorneDepart"),new InputOutputColumnPair(@"LongitudeBorneArrivee", @"LongitudeBorneArrivee"),new InputOutputColumnPair(@"LatitudeBorneDepart", @"LatitudeBorneDepart"),new InputOutputColumnPair(@"LatitudeBorneArrivee", @"LatitudeBorneArrivee")})      
                                     .Append(mlContext.Transforms.Text.FeaturizeText(@"Date", @"Date"))      
                                     .Append(mlContext.Transforms.Concatenate(@"Features", new []{@"TypeUtilisateur",@"LongitudeBorneDepart",@"LongitudeBorneArrivee",@"LatitudeBorneDepart",@"LatitudeBorneArrivee",@"Date"}))      
-                                    .Append(mlContext.Regression.Trainers.LightGbm(new LightGbmRegressionTrainer.Options(){NumberOfLeaves=25,MinimumExampleCountPerLeaf=8,NumberOfIterations=30,MaximumBinCountPerFeature=884,LearningRate=0.614362341356769F,LabelColumnName=@"DureeEnSecondes",FeatureColumnName=@"Features",Booster=new GradientBooster.Options(){SubsampleFraction=0.83598178216964F,FeatureFraction=1F,L1Regularization=0.0246702055312213F,L2Regularization=0.000584974916739539F}}));
+                                    .Append(mlContext.Transforms.NormalizeMinMax(@"Features", @"Features"))      
+                                    .Append(mlContext.Regression.Trainers.LbfgsPoissonRegression(l1Regularization:0.03125F,l2Regularization:9123.60671508902F,labelColumnName:@"DureeEnSecondes",featureColumnName:@"Features"));
 
             return pipeline;
         }
