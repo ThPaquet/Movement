@@ -10,7 +10,7 @@ namespace Movement.DAL.SQLServer.Depots
 {
     public class DepotTypeUtilisateur : IDepotTypeUtilisateur
     {
-        private readonly MovementDbContext _context;
+        private readonly MovementDbContext _context = new MovementDbContext();
 
         public List<TypeUtilisateur> GetAll()
         {

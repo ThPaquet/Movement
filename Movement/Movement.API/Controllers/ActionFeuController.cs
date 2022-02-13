@@ -17,10 +17,13 @@ namespace Movement.API.Controllers
         private readonly IDepotBorne _depotBorne;
 
 
-        public ActionFeuController(IDepotActionFeu p_depot)
+        public ActionFeuController(IDepotActionFeu p_depotActionFeu, IDepotTypeUtilisateur p_depotTypeUtilisateur, IDepotBorne p_depotBorne)
         {
-            this._depotActionFeu = p_depot;
+            this._depotActionFeu = p_depotActionFeu;
+            this._depotTypeUtilisateur = p_depotTypeUtilisateur;
+            this._depotBorne = p_depotBorne;
         }
+
         // GET: api/<ActionFeuController>
         [HttpGet]
         public ActionResult<IEnumerable<ActionFeu>> Get()
@@ -29,8 +32,8 @@ namespace Movement.API.Controllers
         }
 
         // GET api/<ActionFeuController>/5
-        [HttpGet("{p_requete}")]
-        public ActionResult<ActionFeu> Get([FromBody] Requete p_requete)
+        [HttpPost]
+        public ActionResult<ActionFeu> Post([FromBody] Requete p_requete)
         {
             TypeUtilisateur typeUser = _depotTypeUtilisateur.GetAll().SingleOrDefault(type => type.Id == p_requete.IdUtilisateur);
             ActionFeu action = new ActionFeu();
@@ -82,7 +85,7 @@ namespace Movement.API.Controllers
             return Ok(action);
         }
 
-        // POST api/<ActionFeuController>
+        /*// POST api/<ActionFeuController>
         [HttpPost]
         public ActionResult Post([FromBody] ActionFeu p_actionFeu)
         {
@@ -94,7 +97,7 @@ namespace Movement.API.Controllers
             this._depotActionFeu.Post(p_actionFeu);
 
             return Created(nameof(this.Post), p_actionFeu);
-        }
+        }*/
 
         // PUT api/<ActionFeuController>/5
         [HttpPut("{p_id}")]
