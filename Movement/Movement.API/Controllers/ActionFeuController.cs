@@ -12,36 +12,74 @@ namespace Movement.API.Controllers
     [ApiController]
     public class ActionFeuController : ControllerBase
     {
-        private readonly IDepotActionFeu _depot;
+        private readonly IDepotActionFeu _depotActionFeu;
+        private readonly IDepotTypeUtilisateur _depotTypeUtilisateur;
+        private readonly IDepotBorne _depotBorne;
+
 
         public ActionFeuController(IDepotActionFeu p_depot)
         {
-            this._depot = p_depot;
+            this._depotActionFeu = p_depot;
         }
         // GET: api/<ActionFeuController>
         [HttpGet]
         public ActionResult<IEnumerable<ActionFeu>> Get()
         {
-            return Ok(this._depot.GetAll());
+            return Ok(this._depotActionFeu.GetAll());
         }
 
         // GET api/<ActionFeuController>/5
         [HttpGet("{p_requete}")]
-        public ActionResult<float> Get(string p_requete)
+        public ActionResult<ActionFeu> Get([FromBody] Requete p_requete)
         {
-            var sampleData = new MLModel.ModelInput()
+            TypeUtilisateur typeUser = _depotTypeUtilisateur.GetAll().SingleOrDefault(type => type.Id == p_requete.IdUtilisateur);
+            ActionFeu action = new ActionFeu();
+
+            if (typeUser.Type == "Standard")
             {
-                TypeUtilisateur = 3,
-                Date = "2021-04-10 07:10:35",
-                LongitudeBorneDepart = 46.846234f,
-                LongitudeBorneArrivee = 46.846272f,
-                LatitudeBorneDepart = -71.37293f,
-                LatitudeBorneArrivee = -71.37293f
-            };
 
-            var result = MLModel.Predict(sampleData);
+            }
+            else if (typeUser.Type == "Maintenance")
+            {
 
-            return Ok(result.Score);
+            }
+            else
+            {
+
+                Borne borneDepart = _depotBorne.GetAll().Single(borne => borne.Id == p_requete.IdBorne);
+                List<Borne> bornes = _depotBorne.GetBorneByIntersectionId(borneDepart.Intersection.Id);
+                List<MLModel.ModelInput> modelInputs = new List<MLModel.ModelInput>();
+                List<MLModel.ModelOutput> results = new List<MLModel.ModelOutput>();
+
+                foreach (Borne borne in bornes)
+                {
+                    if (borne.Id != borneDepart.Id)
+                    {
+                        var sampleData = new MLModel.ModelInput()
+                        {
+                            TypeUtilisateur = typeUser.Id,
+                            Date = p_requete.Date.ToString(),
+                            LongitudeBorneDepart = borneDepart.Longitude,
+                            LongitudeBorneArrivee = borne.Longitude,
+                            LatitudeBorneDepart = borneDepart.Latitude,
+                            LatitudeBorneArrivee = borne.Latitude
+                        };
+
+                        modelInputs.Add(sampleData);
+                    }
+                }
+
+                foreach (MLModel.ModelInput modelInput in modelInputs)
+                {
+                    results.Add(MLModel.Predict(modelInput));
+                }
+
+                float average = results.Average(result => result.Score);
+
+                action.Type = $"Pieton {average}";
+            }
+
+            return Ok(action);
         }
 
         // POST api/<ActionFeuController>
@@ -53,7 +91,7 @@ namespace Movement.API.Controllers
                 return BadRequest();
             }
 
-            this._depot.Post(p_actionFeu);
+            this._depotActionFeu.Post(p_actionFeu);
 
             return Created(nameof(this.Post), p_actionFeu);
         }
@@ -67,7 +105,7 @@ namespace Movement.API.Controllers
                 return BadRequest();
             }
 
-            ActionFeu actionFeu = this._depot.GetAll()
+            ActionFeu actionFeu = this._depotActionFeu.GetAll()
                 .FirstOrDefault(a => a.Id == p_id);
 
             if (actionFeu == null)
@@ -77,7 +115,7 @@ namespace Movement.API.Controllers
 
             actionFeu.Type = p_actionFeu.Type;
 
-            this._depot.Put(actionFeu);
+            this._depotActionFeu.Put(actionFeu);
             return NoContent();
         }
     }

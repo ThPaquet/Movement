@@ -2,6 +2,7 @@ using Movement.DAL.SQLServer.Depots;
 using Movement.Services.DepotInterfaces;
 using Movement_API;
 
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
